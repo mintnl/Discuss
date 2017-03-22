@@ -122,7 +122,7 @@ class DisRequest {
 	            $c = new $className($this->discuss,$this->controller);
 	    	} catch (Exception $e) { $this->discuss->sendErrorPage(); }
             
-            $this->discuss->controller = call_user_func_array(array($c,'getInstance'),array($this->discuss,$className,$this->controller));
+            $this->discuss->controller = call_user_func_array(array($c,'getInstance'),array(&$this->discuss,$className,$this->controller));
 
             $this->discuss->controller->scriptProperties = array_merge($_REQUEST,$_GET,$_POST);
             $this->discuss->controller->setOptions($this->pageOptions);
